@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: diviner_development
+test:
+  <<: *default
+  database: diviner_test
+production:
+  <<: *default
+  database: diviner_production
+  username: diviner
+  password: <%= ENV['DIVINER_DATABASE_PASSWORD'] %>
